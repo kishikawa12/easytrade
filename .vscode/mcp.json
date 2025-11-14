@@ -5,7 +5,7 @@
       "command": "npx",
       "args": ["-y", "@dynatrace-oss/dynatrace-mcp-server@latest"],
       "env": {
-        "DT_ENVIRONMENT": "https://wkf10640.apps.dynatrace.com"
+        "DT_ENVIRONMENT": "https://guu84124.apps.dynatrace.com"
       }
     }
   }
