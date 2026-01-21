@@ -11,16 +11,19 @@ You should find entities like `[eks-live][easytrade-live-debugger] OrderControll
 
 ### Finding Problems
 
-You can find problems via the `list_problems` tool and applying the following filter:
+Find problems for EasyTrade over the last 24 hours via the `execute_dql` tool and running the following DQL query:
 
 ```dql
-in(k8s.namespace.name, array("easytrade-live-debugger"))
+fetch dt.davis.problems, from: now()-24h, to: now()
+| filter in(k8s.namespace.name, array("easytrade-live-debugger"))
 ```
 
-If you want to narrow down the problem of a specific entity, like a service, you can use the following filter:
+If you want to narrow down the problem of a specific entity, like a service, you can use the following DQL:
 
 ```dql
-in(affected_entity_ids, "<entity-id>") OR matchesValue(affected_entity_ids, "<entity-id>") OR dt.entity.$type == "<entity-id>" OR ...
+fetch dt.davis.problems, from: now()-24h, to: now()
+| filter in(k8s.namespace.name, array("easytrade-live-debugger"))
+| filter in(affected_entity_ids, "<entity-id>") OR matchesValue(affected_entity_ids, "<entity-id>") OR dt.entity.$type == "<entity-id>" OR ...
 ```
 
 ### Metrics
